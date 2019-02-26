@@ -1,6 +1,8 @@
 require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
+var axios = require('axios');
+var moment = require('moment')
 
 var spotify = new Spotify(keys.spotify);
 
@@ -12,13 +14,50 @@ switch (command) {
     getSpotifyData(searchTerm);
     break;
   case 'concert-this':
-
+    getConcertData(searchTerm);
     break;
   case 'movie-this':
     break;
   case 'do-what-it-says':
     break;
 }
+
+function getConcertData(artist) {
+  axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+  )
+    .then(function (response) {
+      var venueName = response.data[0].venue.name;
+      var venueLocation = response.data[0].venue.region;
+      var date = response.data[0].datetime.slice(0, 10);
+      var formattedDate = moment(date).format('MM/DD/YYYY');
+
+      var info = {
+        venueName: {
+          text: venueName,
+          label: 'Venue: '
+        },
+        venueLocation: {
+          text: venueLocation,
+          label: 'Venue Location: '
+        },
+        date: {
+          text: formattedDate,
+          label: 'Date: ',
+        }
+      };
+      updateUI(info);
+
+
+
+    })
+    .catch(function (error) {
+      console.log('error');
+    });
+
+}
+
+
+
 
 function getSpotifyData(searchTerm) {
   var info = {};
@@ -49,26 +88,10 @@ function getSpotifyData(searchTerm) {
     };
     updateUI(info);
   });
-
 }
 
 function updateUI(infoObject) {
   for (var key in infoObject) {
     console.log(infoObject[key].label + infoObject[key].text);
   }
-}
-
-
-var thing = 4;
-switch (thing) {
-  case 4:
-    console.log('butt');
-    break;
-  case 5:
-    console.log('poop');
-  case 'hello':
-    console.log('hello');
-    break;
-  default:
-    console.log('defaulted');
 }
