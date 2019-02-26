@@ -5,11 +5,11 @@ var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 
 var command = process.argv[2];
-var selection = process.argv[3];
+var searchTerm = process.argv[3];
 
 switch (command) {
   case 'spotify-this-song':
-    searchSpotify(selection);
+    getSpotifyData(searchTerm);
     break;
   case 'concert-this':
     break;
@@ -19,8 +19,8 @@ switch (command) {
     break;
 }
 
-
-function searchSpotify(searchTerm) {
+function getSpotifyData(searchTerm) {
+  var info = {};
   spotify.search({ type: 'track', query: searchTerm, limit: 1 }, function (err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
@@ -29,10 +29,30 @@ function searchSpotify(searchTerm) {
     var songTitle = data.tracks.items[0].name;
     var previewLink = data.tracks.items[0].external_urls.spotify;
     var albumName = data.tracks.items[0].album.name;
-    console.log(artistName);
-    console.log(songTitle);
-    console.log(previewLink);
-    console.log(albumName);
+    info = {
+      artistName: {
+        text: artistName,
+        label: 'Artist Name: '
+      },
+      songTitle: {
+        text: songTitle,
+        label: 'Song Title: '
+      },
+      previewLink: {
+        text: previewLink,
+        label: 'Preview: '
+      },
+      albumName: {
+        text: albumName, label: 'Album Name: '
+      },
+    };
+    updateUI(info);
   });
 
+}
+
+function updateUI(infoObject) {
+  for (var key in infoObject) {
+    console.log(infoObject[key].label + infoObject[key].text);
+  }
 }
