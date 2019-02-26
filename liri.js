@@ -12,6 +12,7 @@ switch (command) {
     getSpotifyData(searchTerm);
     break;
   case 'concert-this':
+
     break;
   case 'movie-this':
     break;
@@ -55,4 +56,19 @@ function updateUI(infoObject) {
   for (var key in infoObject) {
     console.log(infoObject[key].label + infoObject[key].text);
   }
+}
+
+
+var thing = 4;
+switch (thing) {
+  case 4:
+    console.log('butt');
+    break;
+  case 5:
+    console.log('poop');
+  case 'hello':
+    console.log('hello');
+    break;
+  default:
+    console.log('defaulted');
 }
