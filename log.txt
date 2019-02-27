@@ -1,17 +1,22 @@
 
+Title: Jurassic Park
+Release Year : 1993
+Country: USA
+IMDB Rating: 8.1
+Language : English, Spanish
+Plot: During a preview tour, a theme park suffers a major power breakdown that allows its cloned dinosaur exhibits to run amok.
+Actors: Sam Neill, Laura Dern, Jeff Goldblum, Richard Attenborough
+
+Venue: Winter Jam 2019
+Venue Location: MO
+Date: 02/28/2019
+
+Artist Name: Céline Dion
+Song Title: My Heart Will Go On - Love Theme from "Titanic"
+Preview: https://open.spotify.com/track/3oEHQmhvFLiE7ZYES0ulzv
+Album Name: Let's Talk About Love
+
 Artist Name: Backstreet Boys
 Song Title: I Want It That Way
 Preview: https://open.spotify.com/track/6e40mgJiCid5HRAGrbpGA6
 Album Name: The Hits--Chapter One
-
-Venue: Winter Jam 2019
-Date: 02/28/2019
-Venue Location: MO
-
-Release Year : 1994
-Title: Forrest Gump
-IMDB Rating: 8.8
-Country: USA
-Language : English
-Plot: The presidencies of Kennedy and Johnson, Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.
-Actors: Tom Hanks, Rebecca Williams, Sally Field, Michael Conner Humphreys
