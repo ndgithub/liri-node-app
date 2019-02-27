@@ -73,6 +73,7 @@ function getMovie(movie) {
         }
       };
       updateUI(info);
+      updateLog(info);
     })
     .catch(function (error) {
       console.log(error);
@@ -102,6 +103,7 @@ function getConcertData(artist) {
         }
       };
       updateUI(info);
+      updateLog(info);
     })
     .catch(function (error) {
       console.log('error');
@@ -134,11 +136,25 @@ function getSpotifyData(searchTerm) {
       },
     };
     updateUI(info);
+    updateLog(info);
   });
 }
 
 function updateUI(infoObject) {
   for (var key in infoObject) {
     console.log(infoObject[key].label + infoObject[key].text);
+  }
+}
+
+function updateLog(infoObject) {
+  fs.appendFile('log.txt', '\n', function (err) {
+    if (err) {
+      console.log('there was a problem adding a new line to log.txt');
+    }
+  })
+  for (var key in infoObject) {
+    fs.appendFile('log.txt', infoObject[key].label + infoObject[key].text + '\n', function (error) {
+      if (error) { console.log('There was a problem logging the data') };
+    });
   }
 }
